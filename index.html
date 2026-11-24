@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Pendaftaran Akun</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+    <div class="container" style="background: lightgoldenrodyellow;">
+        <div class="row">
+            <h2>Form Pendaftaran Akun User</h2>
+            <form id="formPendaftaran" enctype="multipart/form-data">
+            <div class="col-md-8">
+                <label>User Name:<br></label>
+                <input type="text" name="user_name" required>
+                <br>
+                <label>Password:</label>
+                <br>
+                <input type="password" name="password" required>
+                <br>
+            </div>
+            <div class = "col-md-4">
+                <label>Jenis Kelamin:</label>
+                <br>
+                <div>
+                    <input type="button" name="gender" value="Laki-laki" required>
+                    <input type="button" name="gender" value="Perempuan" required>
+                    <input type="button" name="gender" value="Memilih Tidak Menjawab" required>
+                </div>
+                <br>
+                <label>email</label>
+                <div>
+                    <input type = "text" name="email">
+                </div>
+                <label></label>
+            </div>
+        </form>
+        </div></div>
+
+        <script>
+
+// Mengaktifkan plugin
+        $(document).ready(function() {
+    // Mengirim data menggunakan AJAX
+    $("#formPendaftaran").submit(function(e) {
+        e.preventDefault();
+        let form = this;
+        // Mengambil data form biasa menggunakan serializeArray()
+        let dataForm = $(form).serializeArray();
+
+        // Membuat FormData untuk menampung data dan file
+        let formData = new FormData();
+
+        $.each(dataForm, function(i, field) {
+            formData.append(field.name, field.value);
+        });
+
+        // Memasukkan semua file ke FormData
+        $(form).find('input[type="file"]').each(function() {
+            if (this.files.length > 0) {
+                $.each(this.files, function(i, file) {
+                    formData.append("files[]", file);
+                });
+            }
+        });
+
+        $.ajax({
+            url: "proses.php",
+            type: "POST",
+            data: formData,
+
+            processData: false,
+            contentType: false,
+            dataType: "json",
+
+            success: function(response) {
+
+                if (response.status === "success") 
+                {
+                    $("#hasil").html(
+                        "<p style='color:green'>" +
+                        response.message + "</p>"
+                    );
+
+                    form.reset();
+                    // Kembalikan input file menjadi satu
+                    $("#fileContainer .file-input:not(:first)").remove();
+                } 
+                else {
+                    $("#hasil").html(
+                        "<p style='color:red'>" +
+                        response.message + "</p>"
+                    );
+                }
+            },
+
+            error: function(xhr) {
+                let message = "Terjadi kesalahan saat mengirim data.";
+
+                try {
+                    let response = JSON.parse(xhr.responseText);
+                    message = response.message || message;
+                } catch (e) {}
+
+                $("#hasil").html(
+                    "<p style='color:red'>" + message + "</p>"
+                );
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
