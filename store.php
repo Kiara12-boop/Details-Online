@@ -1,65 +1,10 @@
 <?php
 session_start();
-$activePage = 'store';
-$pageTitle  = 'Store';
+require_once 'includes/prod_show.php';
 
-include 'includes/frame.php';
-$products = [
-    [
-        'kode'   => 'ABC123',
-        'nama'   => 'Nama Produk 1',
-        'type'   => 'Vinyl Plank',
-        'ukuran' => 'Floor tiles, cm x cm',
-        'motif'  => 10,
-        'stock'  => 1234,
-        'harga'  => 8293792,
-    ],
-    [
-        'kode'   => 'ABC124',
-        'nama'   => 'Nama Produk 2',
-        'type'   => 'SPC Flooring',
-        'ukuran' => 'Floor tiles, cm x cm',
-        'motif'  => 10,
-        'stock'  => 1234,
-        'harga'  => 123456,
-    ],
-    [
-        'kode'   => 'ABC125',
-        'nama'   => 'Nama Produk 3',
-        'type'   => 'Parquet Kayu',
-        'ukuran' => 'Floor tiles, cm x cm',
-        'motif'  => 10,
-        'stock'  => 1234,
-        'harga'  => 150000,
-    ],
-    [
-        'kode'   => 'ABC126',
-        'nama'   => 'Nama Produk 4',
-        'type'   => 'WPC Decking',
-        'ukuran' => 'Floor tiles, cm x cm',
-        'motif'  => 10,
-        'stock'  => 1234,
-        'harga'  => 222333,
-    ],
-    [
-        'kode'   => 'ABC127',
-        'nama'   => 'Nama Produk 5',
-        'type'   => 'Vinyl Plank',
-        'ukuran' => 'Floor tiles, cm x cm',
-        'motif'  => 8,
-        'stock'  => 540,
-        'harga'  => 195000,
-    ],
-    [
-        'kode'   => 'ABC128',
-        'nama'   => 'Nama Produk 6',
-        'type'   => 'SPC Flooring',
-        'ukuran' => 'Floor tiles, cm x cm',
-        'motif'  => 12,
-        'stock'  => 890,
-        'harga'  => 310000,
-    ],
-];
+$activePage   = 'store';
+$pageTitle    = 'Store - Bagian Flooring';
+$categorySlug = trim($_GET['kategori'] ?? 'flooring');
 
 $categories = [
     'Vinyl Plank',
@@ -74,6 +19,22 @@ $categories = [
     'Aksesoris',
 ];
 
+$products = [];
+try {
+    $products = getAllProducts($categorySlug !== '' ? $categorySlug : null);
+    if (!$products) {
+        $products = getAllProducts(null);
+    }
+} catch (Throwable $e) {
+    $products = [
+        ['kode' => 'test1', 'nama' => 'Nama Produk 1', 'type' => 'Vinyl Plank', 'panjang_lebar' => 'cm x cm', 'harga' => 8293792],
+        ['kode' => 'wall5', 'nama' => 'Nama Produk 2', 'type' => 'SPC Flooring', 'panjang_lebar' => 'cm x cm', 'harga' => 123456],
+        ['kode' => 'ABC125', 'nama' => 'Nama Produk 3', 'type' => 'Parquet Kayu', 'panjang_lebar' => 'cm x cm', 'harga' => 150000],
+        ['kode' => 'ABC126', 'nama' => 'Nama Produk 4', 'type' => 'WPC Decking', 'panjang_lebar' => 'cm x cm', 'harga' => 222333],
+    ];
+}
+
+include 'includes/frame.php';
 ?>
 
 <style>
@@ -111,13 +72,21 @@ $categories = [
     color: #111111;
   }
 
-  /* Panel Filter & Sort mengambang di kanan atas katalog */
+  .product-type-badge {
+    display: inline-block;
+    font-size: 0.85rem;
+    background-color: #e9eef2;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+
   .filter-popover {
     display: none;
     position: absolute;
     top: 122px;
     right: 24px;
-    width: 340px;
+    width: 360px;
     max-width: calc(100% - 32px);
     background-color: #cbd2d8;
     border: 2px solid #7c8082;
@@ -142,6 +111,7 @@ $categories = [
     height: 20px;
     accent-color: #2b6cb0;
     cursor: pointer;
+    flex-shrink: 0;
   }
 
   @media (max-width: 767.98px) {
@@ -152,7 +122,6 @@ $categories = [
   }
 </style>
 
-<!-- Judul Kategori & Tombol Filter -->
 <div class="browse-toolbar">
   <h2 class="fw-bold fs-3 m-0">Flooring - All Types</h2>
   <button type="button" id="toggleFilterBtn" class="filter-btn" aria-label="Filter dan Sort">
@@ -160,7 +129,6 @@ $categories = [
   </button>
 </div>
 
-<!-- Panel Filter & Sort -->
 <div id="filterPanel" class="filter-popover">
   <div class="d-flex justify-content-between align-items-center mb-2">
     <div class="filter-section-title m-0">Filter:</div>
@@ -199,24 +167,27 @@ $categories = [
   </div>
 </div>
 
-<!-- Grid Produk (2 Kolom) -->
 <main class="container-fluid px-3 px-md-4 pb-5">
   <div id="productGrid" class="row g-4">
     <?php foreach ($products as $item): ?>
+      <?php
+        $itemType   = (string) ($item['type'] ?? $item['attr_info'] ?? 'Vinyl Plank');
+        $itemUkuran = (string) ($item['panjang_lebar'] ?? 'cm x cm');
+      ?>
       <div
         class="col-6 product-item"
-        data-type="<?= htmlspecialchars($item['type']) ?>"
+        data-type="<?= htmlspecialchars($itemType) ?>"
         data-name="<?= htmlspecialchars($item['nama']) ?>"
         data-price="<?= (int) $item['harga'] ?>"
       >
         <a href="product.php?kode=<?= urlencode($item['kode']) ?>" class="text-decoration-none text-dark d-block">
           <div class="wire-img-box"></div>
           <div class="product-title"><?= htmlspecialchars($item['nama']) ?></div>
-          <span class="product-type-badge"><?= htmlspecialchars($item['type']) ?></span>
+          <span class="product-type-badge"><?= htmlspecialchars($itemType) ?></span>
           <div class="product-meta">
-            <div><?= htmlspecialchars($item['ukuran']) ?></div>
-            <div>Motif tersedia: <?= (int) $item['motif'] ?></div>
-            <div>In Stock: <?= (int) $item['stock'] ?></div>
+            <div>Floor tiles, <?= htmlspecialchars($itemUkuran) ?></div>
+            <div>Motif tersedia: 10</div>
+            <div>In Stock: 1234</div>
             <div class="fw-semibold mt-1">Rp. <?= number_format((int) $item['harga'], 0, ',', '.') ?></div>
           </div>
         </a>
@@ -259,7 +230,6 @@ $categories = [
 
     const activeSort = document.querySelector('input[name="sortOption"]:checked')?.value || "az";
 
-    // Urutkan item produk
     const sortedItems = [...productItems].sort((a, b) => {
       const nameA = a.dataset.name.toLowerCase();
       const nameB = b.dataset.name.toLowerCase();
@@ -277,8 +247,7 @@ $categories = [
 
     sortedItems.forEach((item) => {
       productGrid.appendChild(item);
-      const itemType = item.dataset.type;
-      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(itemType);
+      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(item.dataset.type);
 
       if (matchesType) {
         item.classList.remove("d-none");

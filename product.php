@@ -2,18 +2,19 @@
 session_start();
 require_once 'includes/prod_show.php';
 
-$kode = trim($_GET['kode'] ?? 'ABC123');
+$kode = trim($_GET['kode'] ?? 'test1');
+$product = null;
+$dbError = null;
 
 try {
     $product = findProductByCode($kode);
-} catch (PDOException $e) {
-    $product = null;
+} catch (Throwable $e) {
     $dbError = 'Gagal mengambil data produk dari database.';
 }
 
 $activePage = 'store';
 $pageTitle  = $product
-    ? 'Store / ' . ucfirst($product['category_slug']) . ' / ' . $product['kode']
+    ? 'Store / ' . ucfirst((string) $product['category_slug']) . ' / ' . $product['kode']
     : 'Produk Tidak Ditemukan';
 
 include 'includes/frame.php';
@@ -133,7 +134,7 @@ include 'includes/frame.php';
       </button>
     </div>
 
-    <?php if ($product['subtitle'] !== ''): ?>
+    <?php if (!empty($product['subtitle'])): ?>
       <div class="fs-5 mb-3"><?= htmlspecialchars($product['subtitle']) ?></div>
     <?php endif; ?>
 
@@ -144,27 +145,27 @@ include 'includes/frame.php';
           <tr>
             <td class="spec-label">Panjang x Lebar:</td>
             <td class="spec-colon">:</td>
-            <td><?= htmlspecialchars($product['panjang_lebar']) ?></td>
+            <td><?= htmlspecialchars((string) ($product['panjang_lebar'] ?? 'cm x cm')) ?></td>
           </tr>
           <tr>
             <td class="spec-label">Tinggi</td>
             <td class="spec-colon">:</td>
-            <td><?= htmlspecialchars($product['tinggi']) ?></td>
+            <td><?= htmlspecialchars((string) ($product['tinggi'] ?? 'cm')) ?></td>
           </tr>
           <tr>
             <td class="spec-label">Berat</td>
             <td class="spec-colon">:</td>
-            <td><?= htmlspecialchars($product['berat']) ?></td>
+            <td><?= htmlspecialchars((string) ($product['berat'] ?? 'kg')) ?></td>
           </tr>
           <tr>
             <td class="spec-label">Tebal</td>
             <td class="spec-colon">:</td>
-            <td><?= htmlspecialchars($product['tebal']) ?></td>
+            <td><?= htmlspecialchars((string) ($product['tebal'] ?? 'mm')) ?></td>
           </tr>
           <tr>
             <td class="spec-label">Attr</td>
             <td class="spec-colon">:</td>
-            <td><?= htmlspecialchars($product['attr_info']) ?></td>
+            <td><?= htmlspecialchars((string) ($product['attr_info'] ?? '')) ?></td>
           </tr>
         </table>
       </div>
@@ -215,9 +216,12 @@ include 'includes/frame.php';
       <h3 class="fw-bold fs-2 mb-2">Masih ada Pertanyaan?</h3>
       <div class="fs-4 mb-3">Bisa langsung konsultasi ke nomor ini :</div>
       <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
-        <?php $phoneDigits = preg_replace('/\D+/', '', $product['consult_phone']); ?>
+        <?php
+          $consultPhone = (string) ($product['consult_phone'] ?? '0123-4567-8901');
+          $phoneDigits  = preg_replace('/\D+/', '', $consultPhone);
+        ?>
         <a href="tel:<?= htmlspecialchars($phoneDigits) ?>" class="consult-pill">
-          <?= htmlspecialchars($product['consult_phone']) ?>
+          <?= htmlspecialchars($consultPhone) ?>
         </a>
         <span class="consult-logo-circle">logo</span>
       </div>
@@ -236,11 +240,11 @@ include 'includes/frame.php';
   }
 
   document.getElementById("buyNowBtn")?.addEventListener("click", () => {
-    window.location.href = "qris.php?kode=<?= urlencode($product['kode'] ?? '') ?>";
+    window.location.href = "includes/checkout.php?kode=<?= urlencode($product['kode'] ?? 'test1') ?>";
   });
 
   document.getElementById("saveLaterBtn")?.addEventListener("click", () => {
-    alert("Produk <?= htmlspecialchars($product['kode'] ?? '') ?> ditambahkan ke List Nanti Dulu.");
+    window.location.href = "orders.php";
   });
 </script>
 
