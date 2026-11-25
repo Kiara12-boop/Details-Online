@@ -105,7 +105,6 @@ $username   = $_SESSION['username'] ?? 'Username123';
       flex-shrink: 0;
     }
 
-    /* Placeholder wireframe box */
     .wire-img-box {
       width: 100%;
       aspect-ratio: 4 / 3;
@@ -151,6 +150,33 @@ $username   = $_SESSION['username'] ?? 'Username123';
       .page-heading { font-size: 1.1rem; }
       .topbar-right { padding: 0 14px; }
     }
+  
+  .boxing {
+    max-width: 780px;
+    border: 2px solid #000;
+    border-radius: 14px;
+    padding: 28px;
+    background-color: #ffffff;
+  }
+
+  .photoBoxing {
+    width: 200px;
+    height: 160px;
+    border: 10%;
+    background-color: #c7e6ec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222222;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .photoBoxing img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
 .container {
     width: 450px;
