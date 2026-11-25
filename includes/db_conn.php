@@ -4,8 +4,8 @@ function getDbConnection(): PDO
     static $pdo = null;
 
     if ($pdo === null) {
-        $host    = '127.0.0.1'; // atau 'localhost'
-        $dbname  = 'nd_store';
+        $host    = '127.0.0.1';
+        $dbname  = 'accs';
         $user    = 'root';
         $pass    = '';
         $charset = 'utf8mb4';
