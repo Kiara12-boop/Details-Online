@@ -1,71 +1,19 @@
-<!DOCTYPE html>
-<html lang="id">
+<?php
+session_start();
+$activePage = 'home';
+$pageTitle  = 'Home';
+
+include 'includes/frame.php';
+?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ND - Sign Up Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    .topbar-signup {
-      background-color: grey;
-      padding: 16px 32px;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .wire-input {
-      background-color: lightgray;
-      border: none;
-      border-radius: 10px;
-      height: 38px;
-      padding: 6px 14px;
-    }
-
-    .wire-input:focus {
-      background-color: whitesmoke;
-      box-shadow: none;
-      outline: 2px solid grey;
-    }
-
-    .check-verified {
-      color: green;
-      font-size: 45px;
-      line-height: 1;
-    }
-
-    .date-input {
-      width: 82px;
-      height: 52px;
-      border: 2px solid grey;
-      border-radius: 10px;
-      text-align: center;
-      color: grey;
-    }
-
-    .date-input:focus {
-      border-color: #000;
-      box-shadow: none;
-    }
-
-    .btn-wire {
-      background-color: #c7cfd6;
-      color: #000;
-      border: none;
-      border-radius: 12px;
-      padding: 12px 36px;
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
-
-    .btn-wire:hover {
-      background-color: #b5bec7;
-      color: #000;
-    }
-  </style>
+  <link href="/Details-Online/css/input.css" rel="stylesheet">
 </head>
 <body>
-
   <header class="topbar-signup">
     Sign Up Page
   </header>
