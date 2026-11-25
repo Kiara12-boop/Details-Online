@@ -14,9 +14,14 @@ $username   = $_SESSION['username'] ?? 'Username123';
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #ffffff;
       color: #000000;
-      margin: 0;
+      margin: 0;  
+      background-image: url("img/background.jpg");
+      background-size: cover;      
+      background-position: center; 
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
     }
 
     .app-shell {
@@ -27,14 +32,14 @@ $username   = $_SESSION['username'] ?? 'Username123';
     .sidebar {
       width: 150px;
       flex-shrink: 0;
-      background-color: #7c8082;
+      background-color: #3f2618;
       display: flex;
       flex-direction: column;
     }
 
     .brand-box {
       height: 64px;
-      background-color: #cbd2d8;
+      background-color: #4d2f1d;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -49,7 +54,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
       padding: 22px 12px;
       text-align: center;
       text-decoration: none;
-      color: #000000;
+      color: #ffffff;
       font-size: 1.35rem;
       font-weight: 600;
       transition: background-color 0.15s;
@@ -57,7 +62,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
 
     .side-link:hover,
     .side-link.active {
-      background-color: rgba(0, 0, 0, 0.14);
+      background-color: #2d1d12;
     }
 
     .main-area {
@@ -67,7 +72,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
 
     .topbar-right {
       height: 64px;
-      background-color: #7c8082;
+      background-color: #3f2618;
       padding: 0 28px;
       display: flex;
       align-items: center;
@@ -79,7 +84,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
       font-size: 1.45rem;
       font-weight: 700;
       margin: 0;
-      color: #000000;
+      color: #fff;
     }
 
     .user-pill {
@@ -87,7 +92,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
       align-items: center;
       gap: 12px;
       font-size: 1.05rem;
-      color: #111111;
+      color: #fff;
       text-decoration: none;
       white-space: nowrap;
     }
@@ -96,7 +101,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background-color: #cbd2d8;
+      background-color: #fff;
       flex-shrink: 0;
     }
 
@@ -104,7 +109,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
     .wire-img-box {
       width: 100%;
       aspect-ratio: 4 / 3;
-      background-color: #e9f3fc;
+      background-color: #000;
       border: 1px solid #9aa5b1;
       position: relative;
       overflow: hidden;
@@ -118,7 +123,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
       left: -15%;
       width: 130%;
       height: 2px;
-      background-color: #7d858d;
+      background-color: #0000007e; ;
     }
 
     .wire-img-box::before { transform: rotate(35deg); }
@@ -150,10 +155,10 @@ $username   = $_SESSION['username'] ?? 'Username123';
 .container {
     width: 450px;
     margin: 40px auto;
-    background: white;
+    background-color: #0000007e;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #0000007e;
 }
 
 h2, h3 {
@@ -198,11 +203,6 @@ button {
 #tambahFile {
     margin-bottom: 15px;
 }
-
-#hasil {
-    margin-top: 20px;
-}
-
   </style>
 </head>
 <body>

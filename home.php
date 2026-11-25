@@ -8,7 +8,7 @@ include 'includes/frame.php';
 
 <main class="container-fluid px-3 px-md-4 py-4">
   <!-- Hero / Banner Utama -->
-  <section class="p-4 p-md-5 mb-4 rounded-3" style="background-color: #d7dee4;">
+  <section class="p-4 p-md-5 mb-4 rounded-3" style="background-color: #3401015f;;">
     <div class="row align-items-center g-4">
       <div class="col-12 col-md-7">
         <h2 class="fw-bold fs-1 mb-2">Selamat Datang di ND Store</h2>
