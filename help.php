@@ -1,6 +1,7 @@
 <?php
 session_start();
-$activePage = 'help';$pageTitle  = 'Help & Developer Info';
+$activePage = 'help';
+$pageTitle  = 'Help & Developer Info';
 
 // Data developer (bisa kamu ubah sesuai kebutuhan)
 $developer = [
@@ -9,7 +10,6 @@ $developer = [
     'prodi'    => 'Informatika Angkatan 25',
     'foto'      => "img/dev.png",
     'NIM' => '412025012',
-    'chat_url'  => 'https://example.com/chat-langsung',
 ];
 
 include 'includes/frame.php';
@@ -18,7 +18,7 @@ include 'includes/frame.php';
 <style>
   .dev-card {
     max-width: 780px;
-    border: 2px solid #8a8e91;
+    border: 2px solid #000;
     border-radius: 14px;
     padding: 28px;
     background-color: #ffffff;
@@ -28,11 +28,10 @@ include 'includes/frame.php';
     width: 165px;
     height: 200px;
     border: 10%;
-    background-color: #c7cfd6;
+    background-color: #c7e6ec;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
     color: #222222;
     overflow: hidden;
     flex-shrink: 0;
@@ -44,33 +43,22 @@ include 'includes/frame.php';
     object-fit: cover;
   }
 
-  .dev-spec td {
-    padding: 4px 10px 4px 0;
-    vertical-align: top;
-  }
-
   .floating-chat-btn {
     position: fixed;
     right: 24px;
     bottom: 24px;
     background-color: #7c8082;
     color: #ffffff;
-    border: 2px solid #000000;
+    border: 4px solid #444444;
     border-radius: 999px;
     padding: 12px 24px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-    z-index: 1000;
-    transition: background-color 0.15s, transform 0.15s;
+    gap: 10px;  
   }
 
   .floating-chat-btn:hover {
-    background-color: #5f6365;
+    background-color: #454545;
     color: #ffffff;
     transform: translateY(-2px);
   }
@@ -82,29 +70,19 @@ include 'includes/frame.php';
   <div class="dev-card">
     <div class="d-flex flex-column flex-md-row align-items-center align-items-md-start gap-4">
       <div class="dev-photo">
-        <?php if ($developer['foto'] !== ''): ?>
-          <img src="<?= htmlspecialchars($developer['foto']) ?>" alt="Foto Developer">
-        <?php else: ?>
-          FOTO DEV
-        <?php endif; ?>
+        <img src="<?= htmlspecialchars($developer['foto']) ?>" alt="Foto Developer">
       </div>
 
       <!-- Nama & Detail Developer -->
-      <div class="flex-grow-1 text-center text-md-start">
-        <h3 class="fw-bold fs-2 mb-1"><?= htmlspecialchars($developer['nama']) ?></h3>
-        <div class="text-muted fs-5 mb-3"><?= htmlspecialchars($developer['role']) ?></div>
-
-        <p class="mb-3" style="line-height: 1.5;">
-          <?= htmlspecialchars($developer['NIM']) ?>
-        </p>
-
-        <table class="dev-spec mx-auto mx-md-0 text-start">
-          <tr>
-            <td class="fw-semibold">Prodi</td>
-            <td>:</td>
-            <td><?= htmlspecialchars($developer['prodi']) ?></td>
-          </tr>
-        </table>
+      <div class="fw-bold flex-grow-1 text-center text-md-start">
+        <h3 class="fs-2 mb-1">Developer Card</h3>
+        Nama: <?= htmlspecialchars($developer['nama']) ?>
+        <br><br>
+        Role: <?= htmlspecialchars($developer['role']) ?>
+        <br><br>
+        NIM: <?= htmlspecialchars($developer['NIM']) ?>
+        <br><br>
+        Prodi: <?= htmlspecialchars($developer['prodi']) ?>
       </div>
     </div>
   </div>
