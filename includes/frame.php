@@ -215,8 +215,7 @@ button {
         <a href="home.php" class="side-link <?= $activePage === 'home' ? 'active' : '' ?>">Home</a>
         <a href="store.php" class="side-link <?= $activePage === 'store' ? 'active' : '' ?>">Store</a>
         <a href="orders.php" class="side-link <?= $activePage === 'orders' ? 'active' : '' ?>">Orders</a>
-        <a href="help.php" class="side-link <?= $activePage === 'help' ? 'active' : '' ?>">Help</a>
-      </nav>
+        <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="side-link <?= $activePage === 'help' ? 'active' : '' ?>">Help</a>      </nav>
     </aside>
 
     <!-- Area Kanan -->
