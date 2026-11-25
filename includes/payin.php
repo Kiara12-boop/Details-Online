@@ -25,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_paid'])) {
             markOrderPaid($order['order_code']);
         } catch (Throwable $e) {
         }
-        header('Location: payment_finish.php?order_id=' . urlencode($order['order_code']));
+        header('Location: paid.php?order_id=' . urlencode($order['order_code']));
         exit;
     }
-    header('Location: payment_finish.php');
+    header('Location: paid.php');
     exit;
 }
 ?>
