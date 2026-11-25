@@ -3,13 +3,12 @@ session_start();
 $activePage = 'help';
 $pageTitle  = 'Help & Developer Info';
 
-// Data developer (bisa kamu ubah sesuai kebutuhan)
 $developer = [
-    'nama'      => 'Kiara Junaedy',
-    'role'      => 'Web Developer of this web',
-    'prodi'    => 'Informatika Angkatan 25',
-    'foto'      => "img/dev.png",
-    'NIM' => '412025012',
+    'nama'  => 'Kiara Junaedy',
+    'role'  => 'Web Developer of this web',
+    'prodi' => 'Informatika Angkatan 25',
+    'foto'  => "img/dev.png",
+    'NIM'   => '412025012',
 ];
 
 include 'includes/frame.php';

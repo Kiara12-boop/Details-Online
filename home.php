@@ -7,8 +7,7 @@ include 'includes/frame.php';
 ?>
 
 <main class="container-fluid px-3 px-md-4 py-4">
-  <!-- Hero / Banner Utama -->
-  <section class="p-4 p-md-5 mb-4 rounded-3" style="background-color: #3401015f;;">
+  <section class="p-4 p-md-5 mb-4 rounded-3" style="background-color: #d7dee4;">
     <div class="row align-items-center g-4">
       <div class="col-12 col-md-7">
         <h2 class="fw-bold fs-1 mb-2">Selamat Datang di ND Store</h2>
@@ -25,7 +24,6 @@ include 'includes/frame.php';
     </div>
   </section>
 
-  <!-- Kategori Populer -->
   <section class="mb-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h3 class="fw-bold fs-3 m-0">Kategori Pilihan</h3>
@@ -60,33 +58,40 @@ include 'includes/frame.php';
     </div>
   </section>
 
-  <!-- Produk Rekomendasi -->
   <section class="pb-4">
     <h3 class="fw-bold fs-3 mb-3">Produk Rekomendasi</h3>
     <div class="row g-4">
       <div class="col-6 col-md-3">
-        <div class="wire-img-box"></div>
-        <div class="fw-semibold fs-5 mt-2">Nama Produk 1</div>
-        <div class="small">Floor tiles, cm x cm</div>
-        <div class="fw-bold mt-1">Rp. 8.293.792</div>
+        <a href="product.php?kode=ABC123" class="text-decoration-none text-dark d-block">
+          <div class="wire-img-box"></div>
+          <div class="fw-semibold fs-5 mt-2">Nama Produk 1</div>
+          <div class="small">Floor tiles, cm x cm</div>
+          <div class="fw-bold mt-1">Rp. 8.293.792</div>
+        </a>
       </div>
       <div class="col-6 col-md-3">
-        <div class="wire-img-box"></div>
-        <div class="fw-semibold fs-5 mt-2">Nama Produk 2</div>
-        <div class="small">Floor tiles, cm x cm</div>
-        <div class="fw-bold mt-1">Rp. 123.456</div>
+        <a href="product.php?kode=ABC124" class="text-decoration-none text-dark d-block">
+          <div class="wire-img-box"></div>
+          <div class="fw-semibold fs-5 mt-2">Nama Produk 2</div>
+          <div class="small">Floor tiles, cm x cm</div>
+          <div class="fw-bold mt-1">Rp. 123.456</div>
+        </a>
       </div>
       <div class="col-6 col-md-3">
-        <div class="wire-img-box"></div>
-        <div class="fw-semibold fs-5 mt-2">Nama Produk C</div>
-        <div class="small">Floor tiles, cm x cm</div>
-        <div class="fw-bold mt-1">Rp. 150.000</div>
+        <a href="product.php?kode=ABC125" class="text-decoration-none text-dark d-block">
+          <div class="wire-img-box"></div>
+          <div class="fw-semibold fs-5 mt-2">Nama Produk 3</div>
+          <div class="small">Floor tiles, cm x cm</div>
+          <div class="fw-bold mt-1">Rp. 150.000</div>
+        </a>
       </div>
       <div class="col-6 col-md-3">
-        <div class="wire-img-box"></div>
-        <div class="fw-semibold fs-5 mt-2">Nama Produk 4</div>
-        <div class="small">Floor tiles, cm x cm</div>
-        <div class="fw-bold mt-1">Rp. 222.333</div>
+        <a href="product.php?kode=ABC126" class="text-decoration-none text-dark d-block">
+          <div class="wire-img-box"></div>
+          <div class="fw-semibold fs-5 mt-2">Nama Produk 4</div>
+          <div class="small">Floor tiles, cm x cm</div>
+          <div class="fw-bold mt-1">Rp. 222.333</div>
+        </a>
       </div>
     </div>
   </section>
