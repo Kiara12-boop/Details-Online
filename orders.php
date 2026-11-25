@@ -41,11 +41,11 @@ include 'includes/frame.php';
     cursor: pointer;
     transition: background-color 0.15s, border-color 0.15s;
     border: 1.5px solid #e2e7ec;
-    background-color: #ffffff;
+    background-color: #69331c87;
   }
 
   .order-card:hover {
-    background-color: #f6f8fa;
+    background-color: #4a241487;
     border-color: #8a949c;
   }
 
@@ -71,7 +71,7 @@ include 'includes/frame.php';
   }
 
   .order-tracker-box {
-    background-color: #f2f5f7;
+    background-color: #ffffff88;
     border: 1.5px solid #9aa5b1;
     border-radius: 10px;
     padding: 16px 20px;

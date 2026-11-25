@@ -4,10 +4,8 @@ $pageTitle  = $pageTitle ?? 'Home';
 $username   = $_SESSION['username'] ?? 'Username123';
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ND - <?= htmlspecialchars($pageTitle) ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -108,7 +106,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
     .wire-img-box {
       width: 100%;
       aspect-ratio: 4 / 3;
-      background-color: #000;
+      background-color: #a46f1b;
       border: 1px solid #9aa5b1;
       position: relative;
       overflow: hidden;
@@ -122,7 +120,7 @@ $username   = $_SESSION['username'] ?? 'Username123';
       left: -15%;
       width: 130%;
       height: 2px;
-      background-color: #0000007e; ;
+      background-color: #ffffffd7; ;
     }
 
     .wire-img-box::before { transform: rotate(35deg); }
@@ -157,25 +155,6 @@ $username   = $_SESSION['username'] ?? 'Username123';
     border-radius: 14px;
     padding: 28px;
     background-color: #ffffff;
-  }
-
-  .photoBoxing {
-    width: 200px;
-    height: 160px;
-    border: 10%;
-    background-color: #c7e6ec;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #222222;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .photoBoxing img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
 .container {
@@ -234,7 +213,6 @@ button {
 <body>
 
   <div class="app-shell">
-    <!-- Sidebar Navigasi -->
     <aside class="sidebar">
       <a href="home.php" class="brand-box">ND</a>
       <nav>
@@ -245,7 +223,6 @@ button {
       </nav>
     </aside>
 
-    <!-- Area Kanan -->
     <div class="main-area">
       <header class="topbar-right">
         <h1 class="page-heading"><?= htmlspecialchars($pageTitle) ?></h1>

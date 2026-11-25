@@ -46,9 +46,9 @@ include 'includes/frame.php';
     position: fixed;
     right: 24px;
     bottom: 24px;
-    background-color: #7c8082;
+    background-color: #14af0c;
     color: #ffffff;
-    border: 4px solid #444444;
+    border: 4px solid #489a4a;
     border-radius: 999px;
     padding: 12px 24px;
     display: inline-flex;
@@ -57,7 +57,7 @@ include 'includes/frame.php';
   }
 
   .floating-chat-btn:hover {
-    background-color: #454545;
+    background-color: #2d9d45;
     color: #ffffff;
     transform: translateY(-2px);
   }
