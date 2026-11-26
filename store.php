@@ -27,8 +27,8 @@ try {
     }
 } catch (Throwable $e) {
     $products = [
-        ['kode' => 'test1', 'nama' => 'Nama Produk 1', 'type' => 'Vinyl Plank', 'panjang_lebar' => 'cm x cm', 'harga' => 8293792],
-        ['kode' => 'wall5', 'nama' => 'Nama Produk 2', 'type' => 'SPC Flooring', 'panjang_lebar' => 'cm x cm', 'harga' => 123456],
+        ['kode' => 'test1', 'nama' => 'Nama Produk 1', 'type' => 'Vinyl Plank', 'panjang_lebar' => 'cm x cm', 'harga' => 0],
+        ['kode' => 'wall5', 'nama' => 'Nama Produk 2', 'type' => 'SPC Flooring', 'panjang_lebar' => 'cm x cm', 'harga' => 0],
         ['kode' => 'ABC125', 'nama' => 'Nama Produk 3', 'type' => 'Parquet Kayu', 'panjang_lebar' => 'cm x cm', 'harga' => 150000],
         ['kode' => 'ABC126', 'nama' => 'Nama Produk 4', 'type' => 'WPC Decking', 'panjang_lebar' => 'cm x cm', 'harga' => 222333],
     ];
