@@ -54,12 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ND - Login Page</title>
+  <title>Login Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
@@ -69,23 +66,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     .topbar-login {
-      background-color: #9da4a8;
+      background-color: #885235;
       padding: 16px 32px;
       font-size: 1.5rem;
       font-weight: 700;
     }
 
-    .logo-circle {
-      width: 190px;
-      height: 190px;
-      background-color: #c7cfd6;
-      border-radius: 50%;
-      display: flex;
+    .logo image{
+      width: 50px;
+      height: 50px;
       align-items: center;
       justify-content: center;
-      margin: 0 auto;
-      font-size: 0.95rem;
-      color: #222;
     }
 
     .wire-input {
@@ -124,11 +115,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Login Page
   </header>
 
-  <main class="container py-4 py-md-5">
+  <main class="container py-4 py-lg-5">
     <div class="row align-items-center justify-content-center g-4">
-      <div class="col-md-4 text-center d-none d-md-block">
-        <div class="logo-circle">LOGO</div>
-        <div class="fw-bold fs-4 mt-3">ND Store</div>
+      <div class="col-lg-4 text-center">
+        <div class="logo">
+          <img src="img/logo.png" alt="Logo">
+          <div class="fw-bold fs-4 mt-3">Toko Karpet & Wallstuff</div>
+        </div>
       </div>
 
       <div class="col-12 col-md-7 col-lg-6">
@@ -142,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="POST" style="max-width: 420px;">
           <div class="mb-3">
-            <label for="loginId" class="form-label fs-5 mb-1">Email or Username:</label>
+            <label class="form-label fs-5 mb-1">Email or Username:</label>
             <input
               type="text"
               id="loginId"
@@ -154,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
 
           <div class="mb-4">
-            <label for="password" class="form-label fs-5 mb-1">Password:</label>
+            <label class="form-label fs-5 mb-1">Password:</label>
             <input
               type="password"
               id="password"
@@ -165,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
 
           <div class="d-flex align-items-center justify-content-between gap-3">
-            <a href="signup.php" class="text-dark">Belum punya akun? Sign Up</a>
+            <a href="signUp.php" class="text-dark">Belum punya akun? Sign Up here.</a>
             <button type="submit" class="btn btn-wire">Log In</button>
           </div>
         </form>
