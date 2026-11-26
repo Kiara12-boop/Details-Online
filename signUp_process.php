@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'includes/db_conn.php';
-header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json;');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);

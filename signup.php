@@ -1,10 +1,7 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ND - Sign Up Page</title>
+  <title>Sign Up Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
@@ -15,23 +12,17 @@
     }
 
     .topbar-signup {
-      background-color: #9da4a8;
+      background-color: #6d3f2a;
       padding: 16px 32px;
       font-size: 1.5rem;
       font-weight: 700;
     }
 
-    .logo-circle {
-      width: 190px;
-      height: 190px;
-      background-color: #c7cfd6;
-      border-radius: 50%;
-      display: flex;
+    .logo image{
+      width: 50px;
+      height: 50px;
       align-items: center;
       justify-content: center;
-      margin: 0 auto;
-      font-size: 0.95rem;
-      color: #222;
     }
 
     .wire-input {
@@ -93,8 +84,10 @@
   <main class="container py-4 py-md-5">
     <div class="row align-items-center justify-content-center g-4">
       <div class="col-md-4 text-center d-none d-md-block">
-        <div class="logo-circle">LOGO</div>
-        <div class="fw-bold fs-4 mt-3">logo source</div>
+        <div class="logo">
+          <img src="img/logo.png" alt="Logo">
+        </div>
+        <div class="fw-bold fs-4 mt-3">Toko Karpettery</div>
       </div>
 
       <div class="col-12 col-md-7 col-lg-6">
@@ -103,12 +96,12 @@
 
         <form id="signupForm">
           <div class="mb-3" style="max-width: 420px;">
-            <label for="email" class="form-label fs-5 mb-1">Email:</label>
+            <label class="form-label fs-5 mb-1">Email:</label>
             <input type="email" id="email" name="email" class="form-control wire-input" required>
           </div>
 
           <div class="mb-3">
-            <label for="code" class="form-label fs-5 mb-1">Verification code:</label>
+            <label class="form-label fs-5 mb-1">Verification code:</label>
             <div class="d-flex align-items-center gap-3">
               <input type="text" id="code" name="code" class="form-control wire-input" style="max-width: 310px;">
               <i class="bi bi-check-circle-fill check-verified" title="Verified"></i>
@@ -116,12 +109,12 @@
           </div>
 
           <div class="mb-3" style="max-width: 420px;">
-            <label for="username" class="form-label fs-5 mb-1">Username:</label>
+            <label class="form-label fs-5 mb-1">Username:</label>
             <input type="text" id="username" name="username" class="form-control wire-input" required>
           </div>
 
           <div class="mb-3" style="max-width: 420px;">
-            <label for="phone" class="form-label fs-5 mb-1">Phone Number:</label>
+            <label class="form-label fs-5 mb-1">Phone Number:</label>
             <input type="tel" id="phone" name="phone" class="form-control wire-input" required>
           </div>
 
@@ -135,7 +128,7 @@
           </div>
 
           <div class="mb-3" style="max-width: 420px;">
-            <label for="password" class="form-label fs-5 mb-1">Password:</label>
+            <label class="form-label fs-5 mb-1">Password:</label>
             <input type="password" id="password" name="password" class="form-control wire-input" required>
           </div>
 
@@ -189,7 +182,7 @@
         password
       };
 
-      const res = await fetch("signup_process.php", {
+      const res = await fetch("signUp_process.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -202,7 +195,7 @@
         return;
       }
 
-      window.location.href = result.redirect || "home.php";
+      window.location.href = "home.php";
     });
   </script>
 </body>

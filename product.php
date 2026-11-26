@@ -23,13 +23,12 @@ include 'includes/frame.php';
 <style>
   .gallery-strip {
     display: flex;
-    gap: 16px;
     overflow-x: auto;
     padding-bottom: 6px;
     position: relative;
   }
 
-  .gallery-strip .wire-img-box {
+  .gallery-strip .image-wrapper {
     flex: 0 0 calc(33.333% - 11px);
     min-width: 220px;
   }
@@ -57,7 +56,7 @@ include 'includes/frame.php';
   .spec-table td {
     padding: 3px 10px 3px 0;
     vertical-align: top;
-    font-size: 1rem;
+    font-size: 25px;
   }
 
   .spec-label { white-space: nowrap; }
@@ -121,13 +120,20 @@ include 'includes/frame.php';
     </div>
   <?php else: ?>
     <h2 class="fw-bold fs-2 mb-3"><?= htmlspecialchars($product['nama']) ?></h2>
-
     <div class="position-relative mb-3">
       <div id="productGallery" class="gallery-strip">
-        <div class="wire-img-box"></div>
-        <div class="wire-img-box"></div>
-        <div class="wire-img-box"></div>
-        <div class="wire-img-box"></div>
+        <div class="image-wrapper">
+          <img src="http://localhost/works/details-online/img/stuff/Yajo.jpg" alt="picture">  
+        </div>
+        <div class="image-wrapper">
+          <img src="http://localhost/works/details-online/img/stuff/Yajo1.jpg" alt="picture">  
+        </div>
+        <div class="image-wrapper">
+          <img src="http://localhost/works/details-online/img/stuff/Yajo2.jpg" alt="picture">  
+        </div>
+        <div class="image-wrapper">
+          <img src="http://localhost/works/details-online/img/stuff/Yajo3.jpg" alt="picture">  
+        </div>
       </div>
       <button type="button" id="nextSlideBtn" class="gallery-next-btn" aria-label="Geser gambar">
         <i class="bi bi-arrow-right"></i>
@@ -205,25 +211,21 @@ include 'includes/frame.php';
 
     <section class="mb-5">
       <h3 class="fs-3 fw-normal mb-2">Deskripsi:</h3>
+      <div class="fs-4">
       <?php foreach ($product['paragraphs'] as $index => $para): ?>
         <p class="<?= $index === count($product['paragraphs']) - 1 ? 'mb-0' : 'mb-3' ?>" style="line-height: 1.5;">
           <?= htmlspecialchars($para) ?>
         </p>
       <?php endforeach; ?>
+      </div>
     </section>
 
     <section class="text-center pb-3">
       <h3 class="fw-bold fs-2 mb-2">Masih ada Pertanyaan?</h3>
       <div class="fs-4 mb-3">Bisa langsung konsultasi ke nomor ini :</div>
       <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
-        <?php
-          $consultPhone = (string) ($product['consult_phone'] ?? '0123-4567-8901');
-          $phoneDigits  = preg_replace('/\D+/', '', $consultPhone);
-        ?>
-        <a href="tel:<?= htmlspecialchars($phoneDigits) ?>" class="consult-pill">
-          <?= htmlspecialchars($consultPhone) ?>
-        </a>
-        <span class="consult-logo-circle">logo</span>
+        <a href="https://wa.me/c/6283829829897" class="consult-pill">Click here to ask</a>
+        <span class="consult-logo-circle">:D</span>
       </div>
     </section>
   <?php endif; ?>
@@ -240,7 +242,7 @@ include 'includes/frame.php';
   }
 
   document.getElementById("buyNowBtn")?.addEventListener("click", () => {
-    window.location.href = "includes/checkout.php?kode=<?= urlencode($product['kode'] ?? 'test1') ?>";
+    window.location.href = "includes/checkout.php?kode=<?= urlencode($product['kode'] ?? '') ?>";
   });
 
   document.getElementById("saveLaterBtn")?.addEventListener("click", () => {
