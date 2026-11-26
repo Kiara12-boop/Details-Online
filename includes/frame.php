@@ -3,7 +3,7 @@ $activePage = $activePage ?? 'home';
 $pageTitle  = $pageTitle ?? 'Home';
 $username   = $_SESSION['username'] ?? 'Username123';
 ?>
-<!DOCTYPE html>
+
 <html>
 <head>
   <title>ND - <?= htmlspecialchars($pageTitle) ?></title>
@@ -103,28 +103,18 @@ $username   = $_SESSION['username'] ?? 'Username123';
       flex-shrink: 0;
     }
 
-    .wire-img-box {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background-color: #a46f1b;
-      border: 1px solid #9aa5b1;
-      position: relative;
+    .image-wrapper img {
       overflow: hidden;
+      width: 70%;
+      aspect-ratio: 1 / 1;
     }
 
-    .wire-img-box::before,
-    .wire-img-box::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: -15%;
-      width: 130%;
-      height: 2px;
-      background-color: #ffffffd7; ;
+    .image-wrapper_smol img {
+      overflow: hidden;
+      width: 30%;
+      aspect-ratio: 1 / 1;
     }
 
-    .wire-img-box::before { transform: rotate(35deg); }
-    .wire-img-box::after { transform: rotate(-35deg); }
 
     .btn-wire {
       background-color: #cbd2d8;

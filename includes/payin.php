@@ -153,9 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_paid'])) {
     <div class="row align-items-center justify-content-center g-4 g-md-5">
       <div class="col-12 col-md-5 text-center">
         <div class="qris-box">
-          <?php if ($qrisImg !== ''): ?>
-            <img src="<?= htmlspecialchars($qrisImg) ?>" alt="QRIS">
-          <?php endif; ?>
+          <img src="<?= htmlspecialchars($qrisImg) ?>" alt="QRIS">
         </div>
         <div class="small text-muted mt-2">
           Order: <strong><?= htmlspecialchars($displayCode) ?></strong>
@@ -166,13 +164,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_paid'])) {
       </div>
 
       <div class="col-12 col-md-6 col-lg-5 text-center text-md-start">
-        <div class="fw-bold fs-2 mb-2 d-none d-md-block">QRIS</div>
+        <div class="fw-bold fs-2 mb-2">QRIS</div>
         <p class="fs-3 lh-sm mb-4 mx-auto mx-md-0" style="max-width: 360px;">
           Please do the payment before the timer runs out.
         </p>
 
         <div id="countdownTimer" class="timer-text mb-4">05:00</div>
-
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D" target="_blank" rel="noopener noreferrer">Pay here</a>
         <form method="POST" class="d-flex justify-content-center justify-content-md-end">
           <button type="submit" name="confirm_paid" value="1" class="btn-paid">
             <span>I have paid</span>
